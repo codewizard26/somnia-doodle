@@ -46,7 +46,7 @@ Experience the game live with blockchain rewards!
 1. **Clone the repository**
    ```bash
    git clone <repository-url>
-   cd thirdweb-wallet-connect
+   cd somnia-doodle
    ```
 
 2. **Install dependencies**
@@ -81,7 +81,8 @@ Experience the game live with blockchain rewards!
 ## 🔗 Blockchain Information
 
 ### Token Contract Details On Somnia Testnet
-- **Contract Address**: `0xBBA810e84d2049aC7604618447b78BE2Ab146330`
+- **Som Token Contract Address**: `0xBBA810e84d2049aC7604618447b78BE2Ab146330`
+- **Token Explorer**: [View on Somnia Explorer](https://shannon-explorer.somnia.network/token/0xBBA810e84d2049aC7604618447b78BE2Ab146330?tab=contract)
 - **Token Name**: SomCoin
 - **Token Symbol**: SMC
 - **Network**: Somnia Testnet
