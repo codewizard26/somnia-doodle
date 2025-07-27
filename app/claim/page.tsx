@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState, useEffect, useMemo } from "react"
+import React, { useState, useEffect, useMemo, Suspense } from "react"
 import { useActiveAccount, useActiveWallet, useSwitchActiveWalletChain, TransactionButton, useReadContract } from "thirdweb/react"
 import { useRouter, useSearchParams } from "next/navigation"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -20,7 +20,7 @@ const supportedChains = [sepolia, polygonAmoy, baseSepolia, arbitrumSepolia, som
 
 const TOKEN_CONTRACT_ADDRESS = "0xBBA810e84d2049aC7604618447b78BE2Ab146330"
 
-export default function ClaimPage() {
+function ClaimPageContent() {
     const account = useActiveAccount()
     const wallet = useActiveWallet()
     const switchChain = useSwitchActiveWalletChain()
@@ -406,5 +406,13 @@ export default function ClaimPage() {
                 </div>
             </div>
         </div>
+    )
+}
+
+export default function ClaimPage() {
+    return (
+        <Suspense fallback={<div>Loading...</div>}>
+            <ClaimPageContent />
+        </Suspense>
     )
 } 
