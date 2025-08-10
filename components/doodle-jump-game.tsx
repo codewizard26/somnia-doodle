@@ -60,6 +60,10 @@ export default function DoodleJumpGame({ onGameOver }: DoodleJumpGameProps) {
       }
     }
 
+    // Load doodle image
+    const doodleImage = new Image()
+    doodleImage.src = "/doodle.png"
+
     // Player object
     class Player {
       vy = 11
@@ -74,15 +78,20 @@ export default function DoodleJumpGame({ onGameOver }: DoodleJumpGameProps) {
       y = height
 
       draw() {
-        const color = this.dir.includes("left") ? "#4CAF50" : "#2196F3"
-        drawSprite(this.x, this.y, this.width, this.height, color)
+        // Draw doodle image if loaded, otherwise fallback to colored rectangle
+        if (doodleImage.complete && doodleImage.naturalHeight !== 0) {
+          ctx.drawImage(doodleImage, this.x, this.y, this.width, this.height)
+        } else {
+          const color = this.dir.includes("left") ? "#4CAF50" : "#2196F3"
+          drawSprite(this.x, this.y, this.width, this.height, color)
 
-        // Draw simple face
-        if (ctx) {
-          ctx.fillStyle = "#000"
-          ctx.fillRect(this.x + 10, this.y + 10, 5, 5) // Left eye
-          ctx.fillRect(this.x + 30, this.y + 10, 5, 5) // Right eye
-          ctx.fillRect(this.x + 15, this.y + 20, 15, 3) // Mouth
+          // Draw simple face
+          if (ctx) {
+            ctx.fillStyle = "#000"
+            ctx.fillRect(this.x + 10, this.y + 10, 5, 5) // Left eye
+            ctx.fillRect(this.x + 30, this.y + 10, 5, 5) // Right eye
+            ctx.fillRect(this.x + 15, this.y + 20, 15, 3) // Mouth
+          }
         }
       }
 
